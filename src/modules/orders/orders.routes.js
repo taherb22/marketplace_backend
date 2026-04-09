@@ -176,7 +176,7 @@ router.get('/admin/all', authenticate, requireAdmin, async (req, res) => {
 
 // ── POST /orders/:id/confirm ──────────────────────────────────────────────
 router.post('/:id/confirm', authenticate, async (req, res) => {
-  if (!req.profile.is_seller && !req.profile.is_admin) {
+  if (req.profile.seller_status !== 'verified' && !req.profile.is_admin) {
     return res.status(403).json({ error: 'Seller or admin access required' });
   }
 
@@ -200,7 +200,7 @@ router.post('/:id/confirm', authenticate, async (req, res) => {
 router.post('/:id/status', authenticate, [
   body('status').isIn(['processing', 'shipped', 'delivered', 'cancelled']),
 ], async (req, res) => {
-  if (!req.profile.is_seller && !req.profile.is_admin) {
+  if (req.profile.seller_status !== 'verified' && !req.profile.is_admin) {
     return res.status(403).json({ error: 'Seller or admin access required' });
   }
   const errors = validationResult(req);

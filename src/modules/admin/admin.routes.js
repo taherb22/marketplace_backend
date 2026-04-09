@@ -180,7 +180,7 @@ router.post('/products/:id/reject', async (req, res) => {
 router.get('/users', async (req, res) => {
   let query = serviceClient
     .from('profiles')
-    .select('id, name, email, phone, lang, seller_status, is_admin, created_at')
+    .select('id, name, phone, lang, seller_status, is_admin, created_at')
     .order('created_at', { ascending: false });
 
   if (req.query.seller_status) query = query.eq('seller_status', req.query.seller_status);
