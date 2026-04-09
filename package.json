@@ -1,0 +1,23 @@
+{
+  "name": "marketplace-backend",
+  "version": "1.0.0",
+  "description": "Supabase handles **all auth** (passwords, JWTs, email verification, password reset). Your Express API handles **business logic** and enforces roles using Supabase JWTs. PostgreSQL **RLS policies** enforce data access at the database layer as a safety net.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.100.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
